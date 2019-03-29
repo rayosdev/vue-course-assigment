@@ -7,8 +7,8 @@
 <script>
 export default {
     methods:{
-        alertMan: (arg, event) => {
-            console.log(event)
+        alertMan: arg => {
+            // console.log(event)
             alert(arg)
         }
     }
