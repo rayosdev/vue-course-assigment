@@ -32,11 +32,11 @@
 <script>
 export default {
   data(){
-    return ({
+    return {
       isCollapsed: true,
       isLoggedInn: false,
       cards: []
-    })
+    }
   },
   methods:{
     openCloseMenu: function() {
@@ -50,8 +50,8 @@ export default {
       cardsApi
       .then(unparsedCards => unparsedCards.json())
       .then( jsonCards => {
-          console.log(jsonCards)
-          this.cards = jsonCards
+          // console.log(jsonCards.cards)
+          this.cards = jsonCards.cards
       })
   },
 }
