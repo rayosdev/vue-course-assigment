@@ -1,76 +1,25 @@
 <template>
   <div id="app">
     <header>
-      <!-- <div id="nav">
-        <a class="navbar-brand" href="/"> <h1><i class="fa fa-gamepad" aria-hidden="true"></i> Card Game</h1></a>
-        <router-link to="/">Start</router-link> 
-        <router-link to="/home">Home</router-link> 
-        <router-link to="/about">About</router-link> 
-        <router-link to="/man">Man</router-link>
-      </div> -->
-
-
-          <!-- DB7364DDC2 -->
-          <!-- NextGenTel_122FD3 -->
-
-
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+      <nav class="[ head-nav ] [ navbar navbar-default navbar-expand-lg ]">
+        <a class="[ navbar-brand ]" href="#">
+          <router-link to="/"> 
+            <h1><font-awesome-icon icon="gamepad" aria-hidden="true" /> Card Game</h1>
+          </router-link>
+        </a>
+        <button v-on:click="openCloseMenu" class="[ head-nav__toggle-btn ] [ navbar-toggler ]" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
+          <font-awesome-icon class="[ head-nav__toggle-btn__bars ]" icon="bars" aria-hidden="true" />
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+
+        <div id="collapse-menu" class="[ head-nav__links ] [ navbar-collapse ]" v-bind:class="{ collapse: isCollapsed }" >
+          <div class="[ head-nav__links__container ] [d-flex justify-content-end]">
+            <ul class="[ head-nav__links__list-container ] [ nav navbar-nav ]">
+              <li class="[ nav-item nav-link active ]"><a href="#"><router-link to="/home">Home</router-link></a></li>
+              <li><a class="[ nav-item nav-link ]" href="#"><router-link to="/about">About</router-link></a></li>
+              <li><a class="[ nav-item nav-link ]" href="#"><router-link to="/contact">Contact</router-link></a></li>
+            </ul>  
           </div>
-        </div>
-      </nav>
-
-
-
-      <nav class="[ navbar navbar-default navbar-expand-lg ]">
-                <a class="navbar-brand" href="">
-                  <router-link to="/"> 
-                    <h1><font-awesome-icon icon="gamepad" aria-hidden="true" /> Card Game</h1>
-                  </router-link>
-                </a>
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button v-on:click="openCloseMenu" type="button"  class="[ navbar-header__collapsed_btn ] [ navbar-toggle collapsed ]" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-
-
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div id="collapse-menu" class="[ navbar-collapse ]" v-bind:class="{ collapse: isCollapsed }" >
-                <ul class="nav navbar-nav">
-                  <li class="active">
-                    <a href="#">
-                      <router-link to="/home">Home</router-link>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                        <router-link to="/about">About</router-link>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <router-link to="/contact">Contact</router-link>
-                    </a>
-                  </li>
-                </ul>  
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+        </div><!-- /.navbar-collapse -->
       </nav>
     </header>
 
@@ -88,10 +37,13 @@ export default {
     })
   },
   methods:{
-    openCloseMenu: function() {
+    openCloseMenu: function(e) {
       this.isCollapsed = !this.isCollapsed
+      e.target.classList.toggle('head-nav__toggle-btn--active')
     }
-  }
+  },
+  created() {
+  },
 }
 </script>
 
@@ -117,10 +69,53 @@ export default {
   }
 
   body{
-    background-color: white;
+    background-color: white
     height: 100%
   }
-  
+
+  a
+    color white!important
+    text-decoration none!important
+  a:hover
+    color black
+
+  .head-nav
+    &__links
+      justify-items end
+      align-items end
+
+      &__container
+        width 100%
+      // &__list-container
+
+    &__toggle-btn
+      border 2px solid white!important
+      width 50px!important
+      height 40px!important
+      transition all 0.2s
+
+      &--active
+        // transform rotate(-90deg)
+        transform all 0.2s
+        width 40px!important
+        height 50px!important
+
+      &__bars
+        color white
+        // transform scale(1.5, 1.2)
+        font-weight light
+
+      // &__inner-line
+        // background red!important
+        // height 5px!important
+      
+      &__inner-line:before
+        content ""
+        position relative
+        top -20px
+        height 5px
+        width 40px!important
+      
 
 </style>
 

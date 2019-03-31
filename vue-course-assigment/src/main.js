@@ -6,7 +6,7 @@ import router from './router'
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faGamepad } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faGamepad, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import BootstrapVue from 'bootstrap-vue'
@@ -17,7 +17,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 
 
-library.add(faCoffee, faGamepad)
+library.add(faCoffee, faGamepad, faBars)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
