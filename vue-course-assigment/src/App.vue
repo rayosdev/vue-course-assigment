@@ -34,7 +34,8 @@ export default {
   data(){
     return ({
       isCollapsed: true,
-      isLoggedInn: false
+      isLoggedInn: false,
+      cards: []
     })
   },
   methods:{
@@ -44,7 +45,14 @@ export default {
     }
   },
   created() {
+      let cardsApi = fetch("https://api.magicthegathering.io/v1/cards")
 
+      cardsApi
+      .then(unparsedCards => unparsedCards.json())
+      .then( jsonCards => {
+          console.log(jsonCards)
+          this.cards = jsonCards
+      })
   },
 }
 </script>
